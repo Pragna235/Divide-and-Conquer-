@@ -8,6 +8,12 @@
    Worst Case     = O(n^2)
   https://github.com/Pragna235/Divide-and-Conquer-/blob/main/Kth%20Smallest%20Element%20using%20Divide%20and%20Conquer.cpp
  
-* 
+* Closest Pair Algorithm - Find the closest pair points in a set of points using divide and conquer
+  Time Complexity - O(n^2)
+  https://github.com/Pragna235/Divide-and-Conquer-/blob/main/Closest%20Pair%20Algorithm.cpp
+  
+* Closest Pair Algorithm - Find the closest pair points in a set of points using divide and conquer
+  Time Complexity - O(n log n)
+  
   
 
