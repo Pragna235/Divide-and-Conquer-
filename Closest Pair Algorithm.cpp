@@ -1,42 +1,67 @@
-#include <iostream>
-#include <climits>
-
+#include <bits/stdc++.h>
 using namespace std;
 
-// Structure to represent a point on the plane
-struct Point {
-    int x, y;
-};
+// To find the closest pair of points
+long closestPair(vector<pair<int, int> > coordinates, int n)
+{
+	int i;
+	// Vector pair to store points on plane
+	vector<pair<int, int> > v;
+	for (i = 0; i < n; i++)
+		v.push_back({ coordinates[i].first,
+					coordinates[i].second });
 
-// Function to calculate the squared distance between two points
-long long calcDistance(const Point& p1, const Point& p2) {
-    long long dx = p1.x - p2.x;
-    long long dy = p1.y - p2.y;
-    return dx * dx + dy * dy;
-}
+	// Sort them according to their
+	// x-coordinates
+	sort(v.begin(), v.end());
 
-// Function to find the closest pair of points
-long long closestPair(Point coordinates[], int n) {
-    long long minDist = LLONG_MAX;
+	// Minimum distance b/w points
+	// seen so far
+	long d = INT_MAX;
 
-    for (int i = 0; i < n; i++) {
-        for (int j = i + 1; j < n; j++) {
-            long long dist = calcDistance(coordinates[i], coordinates[j]);
-            minDist = min(minDist, dist);
-        }
-    }
+	// Keeping the points in
+	// increasing order
+	set<pair<int, int> > st;
+	st.insert({ v[0].first, v[0].second });
 
-    return minDist;
+	for (i = 1; i < n; i++) {
+		auto l = st.lower_bound(
+			{ v[i].first - d, v[i].second - d });
+		auto r = st.upper_bound(
+			{ v[i].first, v[i].second + d });
+		if (l == st.end())
+			continue;
+
+		for (auto p = l; p != r; p++) {
+			pair<int, int> val = *p;
+			long dis = (v[i].first - val.first)
+						* (v[i].first - val.first)
+					+ (v[i].second - val.second)
+							* (v[i].second - val.second);
+
+			// Updating the minimum
+			// distance dis
+			if (d > dis)
+				d = dis;
+		}
+		st.insert({ v[i].first, v[i].second });
+	}
+
+	return d;
 }
 
 // Driver code
-int main() {
-    // Points on a plane P[i] = {x, y}
-    Point P[] = {{1, 2}, {2, 3}, {3, 4}, {5, 6}, {2, 1}};
-    int n = sizeof(P) / sizeof(P[0]);
+int main()
+{
 
-    // Function call
-    cout << "The smallest distance is " << closestPair(P, n);
+	// Points on a plane P[i] = {x, y}
+	vector<pair<int, int> > P = {
+		{ 1, 2 }, { 2, 3 }, { 3, 4 }, { 5, 6 }, { 2, 1 }
+	};
+	int n = P.size();
 
-    return 0;
+	// Function call
+	cout << "The smallest distance is "
+		<< closestPair(P, n);
+	return 0;
 }
