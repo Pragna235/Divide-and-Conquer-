@@ -24,6 +24,12 @@ long closestPair(vector<pair<int, int> > coordinates, int n)
 	set<pair<int, int> > st;
 	st.insert({ v[0].first, v[0].second });
 
+	/*If the current point is (x, y) and there is a point to the left within a distance of less than d,  
+          the x coordinate of such a point must be between [x − d, x] and the y coordinate must be between [y− d, y+ d]. 
+          Thus, it suffices to only consider points that are located in those ranges. We can achieve this search in O(logN) time by using set st.
+          The efficiency of the algorithm is based on the fact that the region always contains only O(1) points.
+          Return distance d as a final result.*/
+	
 	for (i = 1; i < n; i++) {
 		auto l = st.lower_bound(
 			{ v[i].first - d, v[i].second - d });
