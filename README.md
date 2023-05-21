@@ -14,6 +14,7 @@
   
 * Closest Pair Algorithm - Find the closest pair points in a set of points using divide and conquer
   Time Complexity - O(n log n)
+  https://github.com/Pragna235/Divide-and-Conquer-/blob/main/Closest%20Pair%20Algorithm2.cpp
   
   
 
