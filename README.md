@@ -12,7 +12,7 @@
   <br>Time Complexity - O(n^2)
   <br>https://github.com/Pragna235/Divide-and-Conquer-/blob/main/Closest%20Pair%20Algorithm.cpp
   
-* Closest Pair Algorithm - Find the closest pair points in a set of points using divide and conquer
+* Closest Pair Algorithm - Find the closest pair points in a set of points using divide and conquer (Sweep Line Algorithm)
   <br>Time Complexity - O(n log n)
   <br>https://github.com/Pragna235/Divide-and-Conquer-/blob/main/Closest%20Pair%20Algorithm2.cpp
   
